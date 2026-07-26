@@ -62,7 +62,12 @@ func (h *Handler) CreateLeague(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	http.Redirect(w, r, "/admin/"+adminID, http.StatusSeeOther)
+	if r.Header.Get("HX-Request") == "true" {
+		w.Header().Set("HX-Redirect", "/admin/"+adminID)
+		w.WriteHeader(http.StatusOK)
+	} else {
+		http.Redirect(w, r, "/admin/"+adminID, http.StatusFound)
+	}
 }
 
 func (h *Handler) CheckLeagueExists(w http.ResponseWriter, r *http.Request) {

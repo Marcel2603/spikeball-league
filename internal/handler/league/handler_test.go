@@ -53,12 +53,31 @@ func TestCreateLeague(t *testing.T) {
 
 		h.CreateLeague(w, req)
 
-		if w.Code != http.StatusSeeOther {
-			t.Errorf("got status %d; want %d", w.Code, http.StatusSeeOther)
+		if w.Code != http.StatusFound {
+			t.Errorf("got status %d; want %d", w.Code, http.StatusFound)
 		}
 
 		if !strings.HasPrefix(w.Header().Get("Location"), "/admin/") {
 			t.Errorf("got redirect %q; want prefix /admin/", w.Header().Get("Location"))
+		}
+	})
+
+	t.Run("HTMX creation", func(t *testing.T) {
+		form := url.Values{}
+		form.Add("name", "Test League HTMX")
+		req := httptest.NewRequest(http.MethodPost, "/leagues", strings.NewReader(form.Encode()))
+		req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+		req.Header.Set("HX-Request", "true")
+		w := httptest.NewRecorder()
+
+		h.CreateLeague(w, req)
+
+		if w.Code != http.StatusOK {
+			t.Errorf("got status %d; want %d", w.Code, http.StatusOK)
+		}
+
+		if !strings.HasPrefix(w.Header().Get("HX-Redirect"), "/admin/") {
+			t.Errorf("got HX-Redirect %q; want prefix /admin/", w.Header().Get("HX-Redirect"))
 		}
 	})
 
