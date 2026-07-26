@@ -1,6 +1,12 @@
 # Changelog
 
-## [0.1.0](https://github.com/Marcel2603/spikeball-league/compare/v0.0.0..0.1.0) - 2026-07-26
+## [0.1.1](https://github.com/Marcel2603/spikeball-league/compare/v0.1.0..0.1.1) - 2026-07-26
+
+### Bug Fixes
+
+- *(creation)* Redirect does not work properly - ([15470db](https://github.com/Marcel2603/spikeball-league/commit/15470dbe1bd43771ef38a780d5bef291c336fafc))  by @Marcel2603
+
+## [0.1.0](https://github.com/Marcel2603/spikeball-league/compare/v0.0.0..v0.1.0) - 2026-07-26
 
 ### Features
 
