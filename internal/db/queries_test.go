@@ -14,7 +14,10 @@ func setupTestDB(t *testing.T) (*Queries, func()) {
 
 	q := New(db)
 	return q, func() {
-		db.Close()
+		err := db.Close()
+		if err != nil {
+			return
+		}
 	}
 }
 
