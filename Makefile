@@ -35,7 +35,7 @@ build: generate-static generate-dynamic
 	@go build -v -o bin .
 
 run: generate-dynamic
-	SERVER_HOST=localhost SERVER_PORT=4000 go run main.go
+	SERVER_HOST=localhost SERVER_PORT=4000 SERVER_DOMAIN="http://localhost:4000" go run main.go
 
 generate: generate-static generate-dynamic
 

@@ -10,12 +10,14 @@ Controls the HTTP listener.
 server:
   host: localhost   # Hostname used for CORS allowed origins
   port: 3000        # Port the service listens on
+  domain: http://localhost:3000 # Domain to use for generated public links
 ```
 
-| Key            | Type   | Default     | Description                        |
-|----------------|--------|-------------|------------------------------------|
-| `server.host`  | string | `localhost` | Allowed CORS origin hostname       |
-| `server.port`  | string | `3000`      | HTTP port to listen on             |
+| Key            | Type   | Default                 | Description                        |
+|----------------|--------|-------------------------|------------------------------------|
+| `server.host`  | string | `localhost`             | Allowed CORS origin hostname       |
+| `server.port`  | string | `8080`                  | HTTP port to listen on             |
+| `server.domain`| string | `http://localhost:8080` | Public domain prefix for generated URLs |
 
 ---
 
@@ -33,5 +35,20 @@ log:
 | `log.level` | string | `info`  | `debug`, `info`, `warn`, `error`  |
 
 All logs are emitted as **structured JSON** to stdout with source file and request ID (`req_id`) fields attached.
+
+---
+
+## Database
+
+Controls the local SQLite database connection.
+
+```yaml
+database:
+  path: spikeball.db
+```
+
+| Key              | Type   | Default        | Description                       |
+|------------------|--------|----------------|-----------------------------------|
+| `database.path`  | string | `spikeball.db` | File path to the SQLite database. |
 
 ---

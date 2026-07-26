@@ -10,3 +10,5 @@ coverage*
 app.yml
 custom
 spikeball-league
+*.db
+app.yaml

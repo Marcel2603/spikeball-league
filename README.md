@@ -11,15 +11,14 @@
 
 - tbd
 
-
 ## Docker
 
 ```bash
 docker pull ghcr.io/marcel2603/spikeball-league/spikeball-league:latest
 
-docker run \
-  -p 3000:3000 \
-  -v $PWD/app.yml:/app/app.yml \
+docker run -d \
+  -p 8080:8080 \
+  -v $PWD/app.yaml:/app/app.yaml \
   ghcr.io/marcel2603/spikeball-league/spikeball-league:latest
 ```
 

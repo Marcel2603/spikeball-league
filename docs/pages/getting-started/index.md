@@ -27,7 +27,7 @@ Run with a custom config file:
 ```bash
 docker run \
   -p 3000:3000 \
-  -v $PWD/app.yml:/app/app.yml \
+  -v $PWD/app.yaml:/app/app.yaml \
   ghcr.io/marcel2603/spikeball-league/spikeball-league:latest
 ```
 
@@ -36,7 +36,7 @@ Or with custom branding assets mounted:
 ```bash
 docker run \
   -p 3000:3000 \
-  -v $PWD/app.yml:/app/app.yml \
+  -v $PWD/app.yaml:/app/app.yaml \
   -v $PWD/custom:/app/custom \
   ghcr.io/marcel2603/spikeball-league/spikeball-league:latest
 ```

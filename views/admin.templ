@@ -1,0 +1,205 @@
+package views
+
+import (
+	"fmt"
+	"time"
+	"github.com/Marcel2603/spikeball-league/internal/db"
+)
+
+func formatTime(t time.Time) string {
+	loc, err := time.LoadLocation("Europe/Berlin")
+	if err != nil {
+		return t.Format("02 Jan 2006 15:04")
+	}
+	return t.In(loc).Format("02 Jan 2006 15:04")
+}
+
+func getPlayerName(players []db.Player, id int64) string {
+	for _, p := range players {
+		if p.ID == id {
+			return p.Name
+		}
+	}
+	return "Unknown"
+}
+
+func getTeamName(teams []db.Team, id int64) string {
+	for _, t := range teams {
+		if t.ID == id {
+			return t.Name
+		}
+	}
+	return "Unknown Team"
+}
+
+templ AdminDashboard(league db.League, players []db.Player, teams []db.Team, matches []db.Match, host string) {
+	@Layout(league.Name + " - Admin") {
+		<div x-data x-init={ fmt.Sprintf(`
+			let leagues = JSON.parse(localStorage.getItem('my_leagues') || '[]');
+			let exists = leagues.find(l => l.id === '%s');
+			if (!exists) {
+				leagues.push({ id: '%s', name: '%s', isAdmin: true });
+				localStorage.setItem('my_leagues', JSON.stringify(leagues));
+			}
+		`, league.AdminID, league.AdminID, league.Name) } class="mb-5">
+
+			<script>
+				function cleanLeagueStorage(btn) {
+					let adminId = btn.getAttribute('data-admin-id');
+					let publicId = btn.getAttribute('data-public-id');
+					let leagues = JSON.parse(localStorage.getItem('my_leagues') || '[]');
+					leagues = leagues.filter(l => l.id !== adminId && l.id !== publicId);
+					localStorage.setItem('my_leagues', JSON.stringify(leagues));
+				}
+			</script>
+			<div class="d-flex justify-content-between align-items-center mb-4">
+				<h2 class="header-title mb-0">{ league.Name } <span class="badge bg-danger fs-6 ms-2 align-middle">Admin</span></h2>
+				<div>
+					<button hx-delete={ "/admin/" + league.AdminID }
+							hx-confirm="Are you sure you want to permanently delete this league and all its data?"
+							onclick="cleanLeagueStorage(this)"
+							data-admin-id={ league.AdminID }
+							data-public-id={ league.PublicID }
+							hx-target="body"
+							class="btn btn-outline-danger btn-sm me-2">Delete League</button>
+					<a href="/" class="btn btn-outline-secondary btn-sm">Home</a>
+				</div>
+			</div>
+
+			<div class="card shadow-sm border-0 mb-4 bg-light">
+				<div class="card-body p-4">
+					<h5 class="fw-bold mb-2">Public Link</h5>
+					<p class="text-muted small mb-2">Share this link with players to view standings and log matches.</p>
+					<div class="input-group">
+						<input type="text" class="form-control bg-white" value={ fmt.Sprintf("%s/league/%s", host, league.PublicID) } readonly id="publicLink"/>
+						<button class="btn btn-outline-primary" type="button" onclick="navigator.clipboard.writeText(document.getElementById('publicLink').value); alert('Copied!');">
+							Copy Link
+						</button>
+					</div>
+					<div class="mt-3 text-end">
+						<a href={ templ.SafeURL("/league/" + league.PublicID) } class="btn btn-primary btn-sm" target="_blank">View Public Dashboard</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="row g-4 mb-4">
+				<div class="col-lg-6">
+					<div class="card shadow-sm border-0 h-100">
+						<div class="card-header bg-white border-bottom-0 pt-4 pb-0">
+							<h5 class="card-title header-title">Manage Players</h5>
+						</div>
+						<div class="card-body p-4">
+							<form hx-post={ "/admin/" + league.AdminID + "/players" } hx-target="body" class="d-flex gap-2 mb-4">
+								<input type="text" name="player_name" class="form-control" placeholder="Player Name" required/>
+								<button type="submit" class="btn btn-primary">Add</button>
+							</form>
+
+							<div id="players-list">
+								if len(players) == 0 {
+									<p class="text-muted small text-center my-4">No players added yet.</p>
+								} else {
+									<ul class="list-group list-group-flush border-top">
+										for _, p := range players {
+											<li class="list-group-item d-flex justify-content-between align-items-center py-3 px-0">
+												<span class="fw-medium">{ p.Name }</span>
+												<button hx-delete={ "/admin/" + league.AdminID + "/players/" + fmt.Sprint(p.ID) } hx-target="body" class="btn btn-sm btn-outline-danger">Remove</button>
+											</li>
+										}
+									</ul>
+								}
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-6">
+					<div class="card shadow-sm border-0 h-100">
+						<div class="card-header bg-white border-bottom-0 pt-4 pb-0">
+							<h5 class="card-title header-title">Manage Teams</h5>
+						</div>
+						<div class="card-body p-4">
+							<form hx-post={ "/admin/" + league.AdminID + "/teams" } hx-target="body" class="mb-4">
+								<div class="mb-2">
+									<input type="text" name="team_name" class="form-control" placeholder="Team Name" required/>
+								</div>
+								<div class="d-flex gap-2 mb-2">
+									<select name="player1_id" class="form-select" required>
+										<option value="">Player 1</option>
+										for _, p := range players {
+											<option value={ fmt.Sprint(p.ID) }>{ p.Name }</option>
+										}
+									</select>
+									<select name="player2_id" class="form-select" required>
+										<option value="">Player 2</option>
+										for _, p := range players {
+											<option value={ fmt.Sprint(p.ID) }>{ p.Name }</option>
+										}
+									</select>
+								</div>
+								<button type="submit" class="btn btn-primary w-100">Create Team</button>
+							</form>
+
+							<div id="teams-list">
+								if len(teams) == 0 {
+									<p class="text-muted small text-center my-4">No teams created yet.</p>
+								} else {
+									<ul class="list-group list-group-flush border-top">
+										for _, t := range teams {
+											<li class="list-group-item d-flex justify-content-between align-items-center py-3 px-0">
+												<div>
+													<span class="fw-bold d-block">{ t.Name }</span>
+													<span class="small text-muted">{ getPlayerName(players, t.Player1ID) } & { getPlayerName(players, t.Player2ID) }</span>
+												</div>
+												<button hx-delete={ "/admin/" + league.AdminID + "/teams/" + fmt.Sprint(t.ID) } hx-target="body" class="btn btn-sm btn-outline-danger">Remove</button>
+											</li>
+										}
+									</ul>
+								}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="card shadow-sm border-0 mb-4">
+				<div class="card-header bg-white border-bottom-0 pt-4 pb-0">
+					<h5 class="card-title header-title">Recent Matches</h5>
+				</div>
+				<div class="card-body p-4" id="matches-list">
+					if len(matches) == 0 {
+						<p class="text-muted small text-center my-4">No matches logged yet.</p>
+					} else {
+						<div class="table-responsive">
+							<table class="table table-hover align-middle">
+								<thead>
+									<tr>
+										<th>Date</th>
+										<th>Team 1</th>
+										<th class="text-center">Score</th>
+										<th>Team 2</th>
+										<th class="text-end">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									for _, m := range matches {
+										<tr>
+											<td class="small text-muted">{ formatTime(m.CreatedAt) }</td>
+											<td class="fw-medium">{ getTeamName(teams, m.Team1ID) }</td>
+											<td class="text-center fw-bold fs-5 text-primary">
+												{ fmt.Sprint(m.Team1Score) } - { fmt.Sprint(m.Team2Score) }
+											</td>
+											<td class="fw-medium">{ getTeamName(teams, m.Team2ID) }</td>
+											<td class="text-end">
+												<button hx-delete={ "/admin/" + league.AdminID + "/matches/" + fmt.Sprint(m.ID) } hx-target="body" class="btn btn-sm btn-outline-danger">Delete</button>
+											</td>
+										</tr>
+									}
+								</tbody>
+							</table>
+						</div>
+					}
+				</div>
+			</div>
+		</div>
+	}
+}

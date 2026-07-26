@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"github.com/Marcel2603/spikeball-league/cmd/config"
+	"github.com/Marcel2603/spikeball-league/internal/db"
 	staticfiles "github.com/Marcel2603/spikeball-league/internal/handler/static-files"
 )
 
@@ -19,7 +20,14 @@ func TestServerStarts(t *testing.T) {
 
 	staticfiles.NewHandler(staticFiles)
 
-	app, err := setupApp(c, mockLogger)
+	dbConn, err := db.InitDB(":memory:")
+	if err != nil {
+		t.Fatalf("Failed to init memory db: %v", err)
+	}
+	defer dbConn.Close()
+	queries := db.New(dbConn)
+
+	app, err := setupApp(c, mockLogger, queries)
 	if err != nil {
 		t.Fatalf("Failed to setup app: %v", err)
 	}

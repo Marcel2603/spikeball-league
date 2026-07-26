@@ -1,0 +1,38 @@
+-- +goose Up
+CREATE TABLE leagues (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    public_id TEXT NOT NULL UNIQUE,
+    admin_id TEXT NOT NULL UNIQUE,
+    name TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+CREATE TABLE players (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    league_id INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    FOREIGN KEY(league_id) REFERENCES leagues(id) ON DELETE CASCADE
+);
+
+CREATE TABLE matches (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    league_id INTEGER NOT NULL,
+    team1_p1 INTEGER NOT NULL,
+    team1_p2 INTEGER NOT NULL,
+    team2_p1 INTEGER NOT NULL,
+    team2_p2 INTEGER NOT NULL,
+    team1_score INTEGER NOT NULL,
+    team2_score INTEGER NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    FOREIGN KEY(league_id) REFERENCES leagues(id) ON DELETE CASCADE,
+    FOREIGN KEY(team1_p1) REFERENCES players(id),
+    FOREIGN KEY(team1_p2) REFERENCES players(id),
+    FOREIGN KEY(team2_p1) REFERENCES players(id),
+    FOREIGN KEY(team2_p2) REFERENCES players(id)
+);
+
+-- +goose Down
+DROP TABLE matches;
+DROP TABLE players;
+DROP TABLE leagues;

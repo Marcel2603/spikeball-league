@@ -29,7 +29,25 @@ func Index() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"description\" content=\"Spikeball-League\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>Spikeball League</title><!-- link rel=\"icon\" href=\"./../static/favicon.png\" type=\"image/png\"/--><!-- Google Fonts: Outfit --><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link href=\"https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap\" rel=\"stylesheet\"><link href=\"./../static/bootstrap.min.css\" rel=\"stylesheet\"><script defer src=\"./../static/alpine.min.js\"></script><script defer src=\"./../static/htmx.min.js\"></script><script defer src=\"./../static/htmx-response-target.js\"></script><script src=\"./../static/bootstrap.bundle.min.js\"></script><style>\r\n\t\t\t</style></head><body><main class=\"max-w-2xl mx-auto mt-20 text-center\"><h1 class=\"text-4xl font-bold mb-4\">Spikeball Leagues</h1><p class=\"text-gray-600 mb-8\">Generate a league. Share the link. Track stats.</p><form hx-post=\"/leagues\" class=\"flex gap-4 justify-center mb-16\"><input type=\"text\" name=\"league_name\" placeholder=\"League Name...\" required class=\"border rounded px-4 py-2 w-64\"> <button type=\"submit\" style=\"background-color: #0a53be\" class=\"text-dark px-6 py-2 rounded font-semibold hover:bg-orange-700\">Create</button></form></main></body></html>")
+		templ_7745c5c3_Var2 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+			templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+			templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+			if !templ_7745c5c3_IsBuffer {
+				defer func() {
+					templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+					if templ_7745c5c3_Err == nil {
+						templ_7745c5c3_Err = templ_7745c5c3_BufErr
+					}
+				}()
+			}
+			ctx = templ.InitializeContext(ctx)
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"row justify-content-center\"><div class=\"col-md-8 col-lg-6 text-center\"><h1 class=\"header-title mb-3\">Spikeball Leagues</h1><p class=\"text-muted mb-5\">Create a league, share the link, and track your matches.</p><div class=\"card shadow-sm mb-5 border-0\"><div class=\"card-body p-4\"><form hx-post=\"/leagues\" class=\"d-flex gap-2\"><input type=\"text\" name=\"name\" placeholder=\"Enter League Name\" required class=\"form-control form-control-lg\"> <button type=\"submit\" class=\"btn btn-primary btn-lg px-4\">Create</button></form></div></div><div x-data=\"{ leagues: [] }\" x-init=\"\n\t\t\t\t\tlet saved = JSON.parse(localStorage.getItem('my_leagues') || '[]');\n\t\t\t\t\t(async () => {\n\t\t\t\t\t\tlet valid = [];\n\t\t\t\t\t\tfor (let i = 0; i < saved.length; i++) {\n\t\t\t\t\t\t\ttry {\n\t\t\t\t\t\t\t\tlet res = await fetch('/leagues/' + saved[i].id + '/exists');\n\t\t\t\t\t\t\t\tif (res.ok) {\n\t\t\t\t\t\t\t\t\tvalid.push(saved[i]);\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t} catch (e) {\n\t\t\t\t\t\t\t\tvalid.push(saved[i]); // keep it if network fails\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t\tlocalStorage.setItem('my_leagues', JSON.stringify(valid));\n\t\t\t\t\t\tleagues = valid;\n\t\t\t\t\t})();\n\t\t\t\t\" x-cloak><template x-if=\"leagues.length > 0\"><div class=\"text-start\"><h4 class=\"header-title mb-3\">Your Leagues</h4><div class=\"list-group shadow-sm\"><template x-for=\"league in leagues\" :key=\"league.id\"><a x-bind:href=\"league.isAdmin ? '/admin/' + league.id : '/league/' + league.id\" class=\"list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3\"><div><span x-text=\"league.name\" class=\"fw-medium\"></span></div><span x-show=\"league.isAdmin\" class=\"badge bg-primary rounded-pill\">Admin</span></a></template></div></div></template></div></div></div>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			return nil
+		})
+		templ_7745c5c3_Err = Layout("Home").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

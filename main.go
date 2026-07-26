@@ -8,8 +8,10 @@ import (
 	"strings"
 
 	"github.com/Marcel2603/spikeball-league/cmd/config"
+	"github.com/Marcel2603/spikeball-league/internal/db"
+	"github.com/Marcel2603/spikeball-league/internal/handler/admin"
 	"github.com/Marcel2603/spikeball-league/internal/handler/health"
-	"github.com/Marcel2603/spikeball-league/internal/handler/index"
+	"github.com/Marcel2603/spikeball-league/internal/handler/league"
 	staticfiles "github.com/Marcel2603/spikeball-league/internal/handler/static-files"
 	"github.com/Marcel2603/spikeball-league/internal/handler/version"
 	custommw "github.com/Marcel2603/spikeball-league/internal/middleware"
@@ -51,7 +53,15 @@ func main() {
 
 	staticfiles.NewHandler(staticFiles)
 
-	r, err := setupApp(configuration, logger)
+	dbConn, err := db.InitDB(configuration.Database.Path)
+	if err != nil {
+		logger.Error("Failed to initialize database", slog.String("error", err.Error()))
+		os.Exit(1)
+	}
+	defer dbConn.Close()
+	queries := db.New(dbConn)
+
+	r, err := setupApp(configuration, logger, queries)
 	if err != nil {
 		logger.Error("Error starting server", slog.String("error", err.Error()))
 		os.Exit(1)
@@ -65,10 +75,17 @@ func main() {
 	}
 }
 
-func setupApp(configuration config.Config, logger *slog.Logger) (*chi.Mux, error) {
+func setupApp(configuration config.Config, logger *slog.Logger, queries *db.Queries) (*chi.Mux, error) {
 	r := setupServerRouter(configuration, logger)
 
-	r.Get("/", index.Handler)
+	domain := configuration.Server.Domain
+	if domain == "" {
+		domain = "https://" + configuration.Server.Host + ":" + configuration.Server.Port
+	}
+	leagueHandler := league.NewHandler(queries, domain)
+	leagueHandler.RegisterRoutes(r)
+	adminHandler := admin.NewHandler(queries, domain)
+	adminHandler.RegisterRoutes(r)
 	r.Get("/health", health.LivenessHandler)
 	r.Get("/health/live", health.LivenessHandler)
 	r.Get("/health/ready", health.ReadinessHandler())

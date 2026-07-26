@@ -1,9 +1,8 @@
 package index
 
 import (
-	"net/http"
-
 	"github.com/Marcel2603/spikeball-league/views"
+	"net/http"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {

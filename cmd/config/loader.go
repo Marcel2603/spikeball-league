@@ -27,7 +27,7 @@ func loadConfig() {
 	var appData Config
 	appConfig, err := os.ReadFile("app.yml")
 	if err == nil {
-		log.Println("Loading app config from app.yml")
+		log.Println("Loading app config from file")
 		loadConfigFromYaml(appConfig, &appData)
 		_ = mergo.Merge(&defaultData, appData, mergo.WithOverride)
 	}
