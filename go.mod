@@ -4,6 +4,7 @@ go 1.26.2
 
 require (
 	dario.cat/mergo v1.0.2
+	github.com/PuerkitoBio/goquery v1.12.0
 	github.com/a-h/templ v0.3.1020
 	github.com/andybalholm/brotli v1.2.2
 	github.com/go-chi/chi/v5 v5.3.1
@@ -11,9 +12,9 @@ require (
 	github.com/go-chi/metrics v0.1.1
 	github.com/google/uuid v1.6.0
 	github.com/kelseyhightower/envconfig v1.4.0
-	github.com/mattn/go-sqlite3 v1.14.48
 	github.com/pressly/goose/v3 v3.27.3
 	gopkg.in/yaml.v3 v3.0.1
+	modernc.org/sqlite v1.54.0
 )
 
 require (
@@ -21,7 +22,6 @@ require (
 	filippo.io/edwards25519 v1.2.0 // indirect
 	github.com/ClickHouse/ch-go v0.73.0 // indirect
 	github.com/ClickHouse/clickhouse-go/v2 v2.47.0 // indirect
-	github.com/PuerkitoBio/goquery v1.12.0 // indirect
 	github.com/a-h/parse v0.0.0-20250122154542-74294addb73e // indirect
 	github.com/andybalholm/cascadia v1.3.3 // indirect
 	github.com/antlr4-go/antlr/v4 v4.13.1 // indirect
@@ -117,7 +117,6 @@ require (
 	modernc.org/libc v1.74.3 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.11.0 // indirect
-	modernc.org/sqlite v1.54.0 // indirect
 )
 
 tool (
