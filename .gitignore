@@ -1,0 +1,12 @@
+.idea
+
+# ignore build result
+bin
+!bin/.gitkeep
+
+.vscode
+
+coverage*
+app.yml
+custom
+spikeball-league
