@@ -27,7 +27,6 @@ func TestLeagueOperations(t *testing.T) {
 
 	ctx := context.Background()
 
-	// Create a league
 	league, err := q.CreateLeague(ctx, CreateLeagueParams{
 		PublicID: "pub-1",
 		AdminID:  "adm-1",
@@ -40,7 +39,6 @@ func TestLeagueOperations(t *testing.T) {
 		t.Errorf("expected Test League, got %s", league.Name)
 	}
 
-	// Get league by Admin ID
 	l1, err := q.GetLeagueByAdminID(ctx, "adm-1")
 	if err != nil {
 		t.Fatalf("failed to get league by admin id: %v", err)
