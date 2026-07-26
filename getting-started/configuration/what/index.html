@@ -292,8 +292,6 @@
       
         
       
-        
-      
     
     
     
@@ -339,33 +337,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../customisation.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Customisation
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -503,7 +474,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -524,14 +495,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -629,6 +600,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#database" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Database
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -695,6 +677,8 @@
       
         
       
+        
+      
     
     
     
@@ -740,6 +724,33 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Database
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -950,6 +961,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#database" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Database
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -996,8 +1018,6 @@
       
         
           
-        
-      
         
       
         
@@ -1078,6 +1098,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">server</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span><span class="w">   </span><span class="c1"># Hostname used for CORS allowed origins</span>
 <span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3000</span><span class="w">        </span><span class="c1"># Port the service listens on</span>
+<span class="w">  </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://localhost:3000</span><span class="w"> </span><span class="c1"># Domain to use for generated public links</span>
 </code></pre></div>
 <table>
 <thead>
@@ -1098,8 +1119,14 @@
 <tr>
 <td><code>server.port</code></td>
 <td>string</td>
-<td><code>3000</code></td>
+<td><code>8080</code></td>
 <td>HTTP port to listen on</td>
+</tr>
+<tr>
+<td><code>server.domain</code></td>
+<td>string</td>
+<td><code>http://localhost:8080</code></td>
+<td>Public domain prefix for generated URLs</td>
 </tr>
 </tbody>
 </table>
@@ -1128,6 +1155,30 @@
 </tbody>
 </table>
 <p>All logs are emitted as <strong>structured JSON</strong> to stdout with source file and request ID (<code>req_id</code>) fields attached.</p>
+<hr />
+<h2 id="database">Database</h2>
+<p>Controls the local SQLite database connection.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">database</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spikeball.db</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>database.path</code></td>
+<td>string</td>
+<td><code>spikeball.db</code></td>
+<td>File path to the SQLite database.</td>
+</tr>
+</tbody>
+</table>
 <hr />
 
 

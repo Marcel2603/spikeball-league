@@ -292,8 +292,6 @@
       
         
       
-        
-      
     
     
     
@@ -339,33 +337,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../customisation.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Customisation
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -503,7 +474,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -524,14 +495,14 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+              <label class="md-nav__link md-nav__link--active" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -626,6 +597,8 @@
       
         
       
+        
+      
     
     
     
@@ -671,6 +644,33 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Database
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -904,8 +904,6 @@
       
         
       
-        
-      
     
     
     
@@ -970,8 +968,8 @@
 <h1 id="configuration">Configuration</h1>
 <p>The service is configured in layers, applied in this priority order (highest wins):</p>
 <ol>
-<li><code>cmd/config/app.default.yml</code> – bundled defaults</li>
-<li><code>app.yml</code> – user-supplied overrides (optional)</li>
+<li><code>cmd/config/app.default.yml</code> – baseline defaults embedded in the binary</li>
+<li><code>app.yaml</code> or <code>app.yml</code> – user-supplied overrides (optional)</li>
 <li>Environment variables – highest priority, useful for containers</li>
 </ol>
 <p>See the sub-pages for the full reference of each configuration section.</p>

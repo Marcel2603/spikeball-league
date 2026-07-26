@@ -8,11 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://marcel2603.github.io/spikeball-league/about/license/">
+        <link rel="canonical" href="https://marcel2603.github.io/spikeball-league/development/database/">
       
       
-        <link rel="prev" href="../security/">
+        <link rel="prev" href="../">
       
+      
+        <link rel="next" href="../release/">
       
       
         
@@ -23,7 +25,7 @@
     
     
       
-        <title>License - Spikeball League</title>
+        <title>Database Behavior - Spikeball League</title>
       
     
     
@@ -81,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#license" class="md-skip">
+        <a href="#database-behavior" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              License
+              Database Behavior
             
           </span>
         </div>
@@ -580,6 +582,8 @@
       
   
   
+    
+  
   
   
     
@@ -597,15 +601,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../development/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -628,7 +632,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -644,10 +648,36 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../development/database/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Database
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
@@ -662,6 +692,71 @@
   
 
       </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#schema-queries-sqlc" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Schema &amp; Queries (<code>sqlc</code>)
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Migrations
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Configuration
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Testing
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -674,7 +769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/release/" class="md-nav__link">
+      <a href="../release/" class="md-nav__link">
         
   
   
@@ -705,10 +800,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -720,11 +813,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -744,7 +837,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -761,7 +854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/" class="md-nav__link">
+      <a href="../../about/security/" class="md-nav__link">
         
   
   
@@ -785,19 +878,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      
-      
-      
-        
-      
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../about/license/" class="md-nav__link">
         
   
   
@@ -812,7 +896,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -842,6 +925,11 @@
                       
                     
                     
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
                   
                   <div class="md-sidebar__inner">
                     
@@ -853,6 +941,58 @@
   
     
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#schema-queries-sqlc" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Schema &amp; Queries (<code>sqlc</code>)
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Migrations
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Configuration
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Testing
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -897,6 +1037,10 @@
     
       
         
+          
+        
+      
+        
       
         
       
@@ -905,11 +1049,11 @@
     
     
       <li class="md-path__item">
-        <a href="../security/" class="md-path__link">
+        <a href="../" class="md-path__link">
           
   
   <span class="md-ellipsis">
-    About
+    Development
   </span>
 
         </a>
@@ -929,9 +1073,42 @@
   
 
 
-<h1 id="license">License</h1>
-<p>spikeball-league is licensed under the Apache License 2.0.
-See the <a href="https://github.com/Marcel2603/tfcoach/blob/main/LICENSE">LICENSE</a> file for details.</p>
+<h1 id="database-behavior">Database Behavior</h1>
+<p>The Spikeball League Tracker uses <strong>SQLite</strong> as its embedded database to store leagues, teams, players, and match history.
+This design ensures that the application remains entirely self-contained and easy to deploy without needing external
+database services like PostgreSQL.</p>
+<h2 id="schema-queries-sqlc">Schema &amp; Queries (<code>sqlc</code>)</h2>
+<p>We use <a href="https://sqlc.dev/"><code>sqlc</code></a> to generate type-safe Go code from SQL queries.</p>
+<ul>
+<li><strong>Schema:</strong> Defined in <code>internal/db/schema.sql</code>.</li>
+<li><strong>Queries:</strong> Defined in <code>internal/db/queries.sql</code>.</li>
+<li><strong>Generated Code:</strong> When you run <code>sqlc generate</code> (or <code>make generate</code> if configured), it generates the interface</li>
+<li><code>Querier</code> and the implementation in <code>internal/db/</code>.</li>
+</ul>
+<p>This approach eliminates the need for reflection-based ORMs and catches SQL syntax errors at compile time.</p>
+<h2 id="migrations">Migrations</h2>
+<p>Database migrations are managed using <a href="https://github.com/golang-migrate/migrate"><code>golang-migrate</code></a>.</p>
+<ol>
+<li><strong>Embedded Migrations:</strong> The SQL migration files are located in <code>internal/db/migrations/</code> and are embedded directly into
+the binary using Go's <code>//go:embed</code> directive.</li>
+<li><strong>Auto-Migration on Startup:</strong> When the application starts, <code>db.NewDB(config)</code> automatically applies any pending migrations.
+You do not need to run a separate migration script manually.</li>
+</ol>
+<h2 id="configuration">Configuration</h2>
+<p>The database file location is fully configurable via the <code>app.yaml</code> configuration file (or via environment variables).</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># app.yaml</span>
+<span class="nt">database</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;spikeball.db&quot;</span>
+</code></pre></div>
+<p>If the database file does not exist, SQLite will automatically create it upon first connection.</p>
+<h2 id="testing">Testing</h2>
+<p>When writing tests for handlers or database layers, you can use the special <code>:memory:</code> path to create a fast, isolated,
+in-memory SQLite database instance. This prevents tests from clashing on a physical file and guarantees an empty state for
+every test run.</p>
+<p>Example usage for testing:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">config</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">DatabaseConfig</span><span class="p">{</span><span class="nx">Path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;:memory:&quot;</span><span class="p">}</span>
+<span class="nx">testDB</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">NewDB</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span>
+</code></pre></div>
 
 
 

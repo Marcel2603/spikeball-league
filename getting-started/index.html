@@ -14,7 +14,7 @@
         <link rel="prev" href="./..">
       
       
-        <link rel="next" href="./customisation.md">
+        <link rel="next" href="./architecture/">
       
       
         
@@ -292,8 +292,6 @@
       
         
       
-        
-      
     
     
     
@@ -339,33 +337,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="./customisation.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Customisation
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -501,7 +472,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -522,14 +493,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -624,6 +595,8 @@
       
         
       
+        
+      
     
     
     
@@ -669,6 +642,33 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Database
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -1004,8 +1004,6 @@
       
         
       
-        
-      
     
     
     
@@ -1051,13 +1049,13 @@ page and place it in your <code>$PATH</code>.</p>
 <p>Run with a custom config file:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span><span class="nv">$PWD</span>/app.yml:/app/app.yml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="nv">$PWD</span>/app.yaml:/app/app.yaml<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>ghcr.io/marcel2603/spikeball-league/spikeball-league:latest
 </code></pre></div>
 <p>Or with custom branding assets mounted:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span><span class="nv">$PWD</span>/app.yml:/app/app.yml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="nv">$PWD</span>/app.yaml:/app/app.yaml<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-v<span class="w"> </span><span class="nv">$PWD</span>/custom:/app/custom<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>ghcr.io/marcel2603/spikeball-league/spikeball-league:latest
 </code></pre></div>
