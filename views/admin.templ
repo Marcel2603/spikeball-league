@@ -118,21 +118,21 @@ templ AdminDashboard(league db.League, players []db.Player, teams []db.Team, mat
 							<h5 class="card-title header-title">Manage Teams</h5>
 						</div>
 						<div class="card-body p-4">
-							<form hx-post={ "/admin/" + league.AdminID + "/teams" } hx-target="body" class="mb-4">
+							<form hx-post={ "/admin/" + league.AdminID + "/teams" } hx-target="body" class="mb-4" x-data="{ p1: '', p2: '' }">
 								<div class="mb-2">
 									<input type="text" name="team_name" class="form-control" placeholder="Team Name" required/>
 								</div>
 								<div class="d-flex gap-2 mb-2">
-									<select name="player1_id" class="form-select" required>
-										<option value="">Player 1</option>
+									<select name="player1_id" class="form-select" required x-model="p1" @change="p2 = ''">
+                                         <option value="" disabled selected hidden>Select Player 1</option>
 										for _, p := range players {
 											<option value={ fmt.Sprint(p.ID) }>{ p.Name }</option>
 										}
 									</select>
-									<select name="player2_id" class="form-select" required>
-										<option value="">Player 2</option>
+									<select name="player2_id" class="form-select" required x-model="p2" x-bind:disabled="!p1">
+									 <option value="" disabled selected hidden>Select Player 2</option>
 										for _, p := range players {
-											<option value={ fmt.Sprint(p.ID) }>{ p.Name }</option>
+											<option value={ fmt.Sprint(p.ID) } x-show={ fmt.Sprintf("p1 != '%d'", p.ID) }>{ p.Name }</option>
 										}
 									</select>
 								</div>
