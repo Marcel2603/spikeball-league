@@ -4,6 +4,7 @@ import (
 	"compress/gzip"
 	"io/fs"
 	"log"
+	"mime"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -42,6 +43,9 @@ func serveEmbedded(w http.ResponseWriter, r *http.Request, urlPath string) {
 		return
 	}
 
+	if ctype := mime.TypeByExtension(filepath.Ext(name)); ctype != "" {
+		w.Header().Set("Content-Type", ctype)
+	}
 	w.Header().Set("cache-control", "public, max-age=36000")
 	writeBytes(w, r, data)
 }
@@ -64,6 +68,9 @@ func serveFilesystem(w http.ResponseWriter, r *http.Request, urlPath string) {
 		return
 	}
 
+	if ctype := mime.TypeByExtension(filepath.Ext(fullPath)); ctype != "" {
+		w.Header().Set("Content-Type", ctype)
+	}
 	w.Header().Set("cache-control", "public, max-age=36000")
 	writeBytes(w, r, data)
 }

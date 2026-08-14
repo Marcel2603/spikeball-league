@@ -8,7 +8,7 @@ package views
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-func Layout(title string) templ.Component {
+func Layout(title string, theme string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -29,20 +29,46 @@ func Layout(title string) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html lang=\"en\" data-bs-theme=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var2 string
-		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(title)
+		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.ResolveAttributeValue(theme)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layout.templ`, Line: 9, Col: 17}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layout.templ`, Line: 5, Col: 38}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var2)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, " - Spikeball League Tracker</title><!-- Google Fonts: Outfit --><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link href=\"https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap\" rel=\"stylesheet\"><!-- Bootstrap 5 CSS --><link href=\"/static/bootstrap.min.css\" rel=\"stylesheet\"><style>\n\t\t\t\tbody {\n\t\t\t\t\tfont-family: 'Outfit', sans-serif;\n\t\t\t\t\tbackground-color: #f8f9fa;\n\t\t\t\t}\n\t\t\t\t.card {\n\t\t\t\t\tborder-radius: 12px;\n\t\t\t\t\tborder: 1px solid rgba(0,0,0,0.08);\n\t\t\t\t}\n\t\t\t\t.shadow-sm {\n\t\t\t\t\tbox-shadow: 0 2px 4px rgba(0,0,0,0.04) !important;\n\t\t\t\t}\n\t\t\t\t.table-responsive {\n\t\t\t\t\tborder-radius: 12px;\n\t\t\t\t\toverflow: hidden;\n\t\t\t\t\tborder: 1px solid rgba(0,0,0,0.08);\n\t\t\t\t}\n\t\t\t\t.table {\n\t\t\t\t\tmargin-bottom: 0;\n\t\t\t\t}\n\t\t\t\t.table th {\n\t\t\t\t\tbackground-color: #f1f3f5;\n\t\t\t\t\tfont-weight: 600;\n\t\t\t\t\tcolor: #495057;\n\t\t\t\t\tborder-bottom: 2px solid #dee2e6;\n\t\t\t\t}\n\t\t\t\t.btn-primary {\n\t\t\t\t\tbackground-color: #0d6efd;\n\t\t\t\t\tborder-color: #0d6efd;\n\t\t\t\t\tfont-weight: 500;\n\t\t\t\t}\n\t\t\t\t.btn-primary:hover {\n\t\t\t\t\tbackground-color: #0b5ed7;\n\t\t\t\t\tborder-color: #0a58ca;\n\t\t\t\t}\n\t\t\t\t.header-title {\n\t\t\t\t\tfont-weight: 700;\n\t\t\t\t\tcolor: #212529;\n\t\t\t\t\tletter-spacing: -0.5px;\n\t\t\t\t}\n\t\t\t</style><!-- Scripts --><script defer src=\"/static/alpine.min.js\"></script><script defer src=\"/static/htmx.min.js\"></script><script defer src=\"/static/htmx-response-target.js\"></script><script defer src=\"/static/bootstrap.bundle.min.js\"></script></head><body><nav class=\"navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4\"><div class=\"container\"><a class=\"navbar-brand header-title\" href=\"/\">Spikeball League Tracker</a></div></nav><main class=\"container mb-5\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "\" data-theme=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var3 string
+		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.ResolveAttributeValue(theme)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layout.templ`, Line: 5, Col: 59}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var3)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var4 string
+		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(title)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layout.templ`, Line: 9, Col: 17}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, " - Spikeball League Tracker</title><!-- Google Fonts: Outfit --><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link href=\"https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap\" rel=\"stylesheet\"><!-- Bootstrap 5 CSS --><link href=\"/static/bootstrap.min.css\" rel=\"stylesheet\"><link href=\"/static/theme.css\" rel=\"stylesheet\"><!-- Bootstrap Icons --><link href=\"/static/bootstrap-icons.min.css\" rel=\"stylesheet\"><!-- Scripts --><script defer src=\"/static/alpine.min.js\"></script><script defer src=\"/static/htmx.min.js\"></script><script defer src=\"/static/htmx-response-target.js\"></script><script defer src=\"/static/bootstrap.bundle.min.js\"></script><script>\n\t\t\t\tfunction themeToggle() {\n\t\t\t\t\treturn {\n\t\t\t\t\t\tisDark: (document.documentElement.getAttribute('data-bs-theme') || document.documentElement.getAttribute('data-theme')) === 'dark',\n\t\t\t\t\t\ttoggle() {\n\t\t\t\t\t\t\tthis.isDark = !this.isDark;\n\t\t\t\t\t\t\tconst newTheme = this.isDark ? 'dark' : 'light';\n\t\t\t\t\t\t\tdocument.documentElement.setAttribute('data-bs-theme', newTheme);\n\t\t\t\t\t\t\tdocument.documentElement.setAttribute('data-theme', newTheme);\n\t\t\t\t\t\t\tdocument.cookie = 'theme=' + newTheme + '; path=/; max-age=31536000; SameSite=Lax' + (location.protocol === 'https:' ? '; Secure' : '');\n\t\t\t\t\t\t}\n\t\t\t\t\t};\n\t\t\t\t}\n\t\t\t</script></head><body><nav class=\"navbar navbar-expand-lg navbar-custom shadow-sm mb-4\"><div class=\"container d-flex justify-content-between align-items-center\"><a class=\"navbar-brand header-title mb-0\" href=\"/\">Spikeball League Tracker</a><div x-data=\"themeToggle()\"><button id=\"theme-toggle\" type=\"button\" class=\"theme-toggle-btn\" @click=\"toggle()\" :aria-label=\"isDark ? 'Switch to light theme' : 'Switch to dark theme'\" :title=\"isDark ? 'Switch to light theme' : 'Switch to dark theme'\"><span class=\"theme-icon-moon d-inline-flex align-items-center\"><i class=\"bi bi-moon-stars-fill\"></i></span> <span class=\"theme-icon-sun d-inline-flex align-items-center\"><i class=\"bi bi-sun-fill\"></i></span></button></div></div></nav><main class=\"container mb-5\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -50,7 +76,7 @@ func Layout(title string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</main></body></html>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</main></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

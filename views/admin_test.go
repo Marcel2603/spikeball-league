@@ -16,7 +16,7 @@ func TestAdminDashboard(t *testing.T) {
 	teams := []db.Team{{ID: 1, Name: "Team A", Player1ID: 1, Player2ID: 2}}
 	var matches []db.Match
 
-	component := AdminDashboard(league, players, teams, matches, "http://localhost")
+	component := AdminDashboard(league, players, teams, matches, "http://localhost", "light")
 	var buf bytes.Buffer
 	err := component.Render(context.Background(), &buf)
 	if err != nil {
@@ -39,7 +39,7 @@ func TestAdminDashboard_Empty(t *testing.T) {
 	var teams []db.Team
 	var matches []db.Match
 
-	component := AdminDashboard(league, players, teams, matches, "http://localhost")
+	component := AdminDashboard(league, players, teams, matches, "http://localhost", "dark")
 	var buf bytes.Buffer
 	err := component.Render(context.Background(), &buf)
 	if err != nil {
@@ -62,7 +62,7 @@ func TestAdminDashboard_Unknowns(t *testing.T) {
 	teams := []db.Team{{ID: 1, Name: "Team A", Player1ID: 999, Player2ID: 999}}
 	matches := []db.Match{{ID: 1, Team1ID: 999, Team2ID: 999}}
 
-	component := AdminDashboard(league, players, teams, matches, "http://localhost")
+	component := AdminDashboard(league, players, teams, matches, "http://localhost", "light")
 	var buf bytes.Buffer
 	err := component.Render(context.Background(), &buf)
 	if err != nil {
@@ -89,7 +89,7 @@ func TestAdminDashboard_FailingWriter(_ *testing.T) {
 	matches := []db.Match{{ID: 1}}
 
 	for i := 0; i < 15000; i++ {
-		_ = AdminDashboard(league, players, teams, matches, "").Render(context.Background(), &failWriter{target: i})
-		_ = AdminDashboard(league, []db.Player{}, []db.Team{}, []db.Match{}, "").Render(context.Background(), &failWriter{target: i})
+		_ = AdminDashboard(league, players, teams, matches, "", "light").Render(context.Background(), &failWriter{target: i})
+		_ = AdminDashboard(league, []db.Player{}, []db.Team{}, []db.Match{}, "", "dark").Render(context.Background(), &failWriter{target: i})
 	}
 }

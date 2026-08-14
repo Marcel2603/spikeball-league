@@ -40,7 +40,7 @@ func getTeamName(teams []db.Team, id int64) string {
 	return "Unknown Team"
 }
 
-func AdminDashboard(league db.League, players []db.Player, teams []db.Team, matches []db.Match, host string) templ.Component {
+func AdminDashboard(league db.League, players []db.Player, teams []db.Team, matches []db.Match, host string, theme string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -145,14 +145,14 @@ func AdminDashboard(league db.League, players []db.Player, teams []db.Team, matc
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "\" hx-target=\"body\" class=\"btn btn-outline-danger btn-sm me-2\">Delete League</button> <a href=\"/\" class=\"btn btn-outline-secondary btn-sm\">Home</a></div></div><div class=\"card shadow-sm border-0 mb-4 bg-light\"><div class=\"card-body p-4\"><h5 class=\"fw-bold mb-2\">Public Link</h5><p class=\"text-muted small mb-2\">Share this link with players to view standings and log matches.</p><div class=\"input-group\"><input type=\"text\" class=\"form-control bg-white\" value=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "\" hx-target=\"body\" class=\"btn btn-outline-danger btn-sm me-2\">Delete League</button> <a href=\"/\" class=\"btn btn-outline-secondary btn-sm\">Home</a></div></div><div class=\"card shadow-sm border-0 mb-4 bg-light\"><div class=\"card-body p-4\"><h5 class=\"fw-bold mb-2\">Public Link</h5><p class=\"text-muted small mb-2\">Share this link with players to view standings and log matches.</p><div class=\"input-group\"><input type=\"text\" class=\"form-control\" value=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var8 string
 			templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.ResolveAttributeValue(fmt.Sprintf("%s/league/%s", host, league.PublicID))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/admin.templ`, Line: 74, Col: 113}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/admin.templ`, Line: 74, Col: 104}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var8)
 			if templ_7745c5c3_Err != nil {
@@ -171,7 +171,7 @@ func AdminDashboard(league db.League, players []db.Player, teams []db.Team, matc
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "\" class=\"btn btn-primary btn-sm\" target=\"_blank\">View Public Dashboard</a></div></div></div><div class=\"row g-4 mb-4\"><div class=\"col-lg-6\"><div class=\"card shadow-sm border-0 h-100\"><div class=\"card-header bg-white border-bottom-0 pt-4 pb-0\"><h5 class=\"card-title header-title\">Manage Players</h5></div><div class=\"card-body p-4\"><form hx-post=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "\" class=\"btn btn-primary btn-sm\" target=\"_blank\">View Public Dashboard</a></div></div></div><div class=\"row g-4 mb-4\"><div class=\"col-lg-6\"><div class=\"card shadow-sm border-0 h-100\"><div class=\"card-header border-bottom-0 pt-4 pb-0\"><h5 class=\"card-title header-title\">Manage Players</h5></div><div class=\"card-body p-4\"><form hx-post=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -235,7 +235,7 @@ func AdminDashboard(league db.League, players []db.Player, teams []db.Team, matc
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "</div></div></div></div><div class=\"col-lg-6\"><div class=\"card shadow-sm border-0 h-100\"><div class=\"card-header bg-white border-bottom-0 pt-4 pb-0\"><h5 class=\"card-title header-title\">Manage Teams</h5></div><div class=\"card-body p-4\"><form hx-post=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "</div></div></div></div><div class=\"col-lg-6\"><div class=\"card shadow-sm border-0 h-100\"><div class=\"card-header border-bottom-0 pt-4 pb-0\"><h5 class=\"card-title header-title\">Manage Teams</h5></div><div class=\"card-body p-4\"><form hx-post=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -410,7 +410,7 @@ func AdminDashboard(league db.League, players []db.Player, teams []db.Team, matc
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 35, "</div></div></div></div></div><div class=\"card shadow-sm border-0 mb-4\"><div class=\"card-header bg-white border-bottom-0 pt-4 pb-0\"><h5 class=\"card-title header-title\">Recent Matches</h5></div><div class=\"card-body p-4\" id=\"matches-list\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 35, "</div></div></div></div></div><div class=\"card shadow-sm border-0 mb-4\"><div class=\"card-header border-bottom-0 pt-4 pb-0\"><h5 class=\"card-title header-title\">Recent Matches</h5></div><div class=\"card-body p-4\" id=\"matches-list\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -519,7 +519,7 @@ func AdminDashboard(league db.League, players []db.Player, teams []db.Team, matc
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = Layout(league.Name+" - Admin").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Layout(league.Name+" - Admin", theme).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

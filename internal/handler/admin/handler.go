@@ -6,6 +6,7 @@ import (
 	"strconv"
 
 	"github.com/Marcel2603/spikeball-league/internal/db"
+	custommw "github.com/Marcel2603/spikeball-league/internal/middleware"
 	"github.com/Marcel2603/spikeball-league/views"
 	"github.com/go-chi/chi/v5"
 )
@@ -52,7 +53,8 @@ func (h *Handler) AdminDashboard(w http.ResponseWriter, r *http.Request) {
 		matches = []db.Match{}
 	}
 
-	component := views.AdminDashboard(league, players, teams, matches, h.host)
+	theme := custommw.ThemeFromContext(r.Context())
+	component := views.AdminDashboard(league, players, teams, matches, h.host, theme)
 	component.Render(r.Context(), w)
 }
 

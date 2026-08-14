@@ -120,6 +120,7 @@ func setupServerRouter(configuration config.Config, logger *slog.Logger) *chi.Mu
 	}))
 	r.Use(middleware.RequestID)
 	r.Use(custommw.SlogLogger(logger))
+	r.Use(custommw.ThemeMiddleware)
 	r.Use(middleware.Recoverer)
 	return r
 }

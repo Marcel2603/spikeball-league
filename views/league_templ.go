@@ -24,7 +24,7 @@ type TeamStanding struct {
 	WinRate      float64
 }
 
-func LeagueDashboard(league db.League, teams []db.Team, matches []db.Match, standings []TeamStanding) templ.Component {
+func LeagueDashboard(league db.League, teams []db.Team, matches []db.Match, standings []TeamStanding, theme string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -90,7 +90,7 @@ func LeagueDashboard(league db.League, teams []db.Team, matches []db.Match, stan
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</h2><a href=\"/\" class=\"btn btn-outline-secondary btn-sm\">Home</a></div><div class=\"row g-4\"><div class=\"col-lg-8\"><div id=\"standings-container\"><div class=\"card shadow-sm border-0 mb-4\"><div class=\"card-header bg-white border-bottom-0 pt-4 pb-0\"><h5 class=\"card-title header-title\">Leaderboard</h5></div><div class=\"card-body p-4\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</h2><a href=\"/\" class=\"btn btn-outline-secondary btn-sm\">Home</a></div><div class=\"row g-4\"><div class=\"col-lg-8\"><div id=\"standings-container\"><div class=\"card shadow-sm border-0 mb-4\"><div class=\"card-header border-bottom-0 pt-4 pb-0\"><h5 class=\"card-title header-title\">Leaderboard</h5></div><div class=\"card-body p-4\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -254,7 +254,7 @@ func LeagueDashboard(league db.League, teams []db.Team, matches []db.Match, stan
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "</div><div class=\"col-lg-4\"><div class=\"card shadow-sm border-0 h-100\"><div class=\"card-header bg-white border-bottom-0 pt-4 pb-0\"><h5 class=\"card-title header-title\">Match History</h5></div><div class=\"card-body p-4\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "</div><div class=\"col-lg-4\"><div class=\"card shadow-sm border-0 h-100\"><div class=\"card-header border-bottom-0 pt-4 pb-0\"><h5 class=\"card-title header-title\">Match History</h5></div><div class=\"card-body p-4\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -350,7 +350,7 @@ func LeagueDashboard(league db.League, teams []db.Team, matches []db.Match, stan
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = Layout(league.Name).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Layout(league.Name, theme).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
