@@ -7,6 +7,7 @@ import (
 	"strconv"
 
 	"github.com/Marcel2603/spikeball-league/internal/db"
+	custommw "github.com/Marcel2603/spikeball-league/internal/middleware"
 	"github.com/Marcel2603/spikeball-league/views"
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
@@ -31,7 +32,8 @@ func (h *Handler) RegisterRoutes(r chi.Router) {
 }
 
 func (*Handler) Index(w http.ResponseWriter, r *http.Request) {
-	component := views.Index()
+	theme := custommw.ThemeFromContext(r.Context())
+	component := views.Index(theme)
 	component.Render(r.Context(), w)
 }
 
@@ -102,7 +104,8 @@ func (h *Handler) LeagueDashboard(w http.ResponseWriter, r *http.Request) {
 	}
 
 	standings := CalculateStandings(teams, matches)
-	component := views.LeagueDashboard(league, teams, matches, standings)
+	theme := custommw.ThemeFromContext(r.Context())
+	component := views.LeagueDashboard(league, teams, matches, standings, theme)
 	component.Render(r.Context(), w)
 }
 

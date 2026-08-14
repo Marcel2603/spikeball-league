@@ -2,6 +2,7 @@ PKGS        := $(shell go list ./...)
 HTMX_VERSION = 2.0.4
 HTMX_RESPONSE_TARGET_VERSION = 2.0.3
 BOOTSTRAP_VERSION = 5.3.3
+BOOTSTRAP_ICONS_VERSION = 1.11.3
 ALPINE_JS_VERSION = 3.14.9
 
 COVERMODE   := atomic
@@ -47,6 +48,10 @@ generate-static:
 	@curl -s -o ./static/bootstrap.min.css.map https://unpkg.com/bootstrap@${BOOTSTRAP_VERSION}/dist/css/bootstrap.min.css.map
 	@curl -s -o ./static/bootstrap.bundle.min.js https://cdn.jsdelivr.net/npm/bootstrap@${BOOTSTRAP_VERSION}/dist/js/bootstrap.bundle.min.js
 	@curl -s -o ./static/alpine.min.js https://unpkg.com/alpinejs@${ALPINE_JS_VERSION}/dist/cdn.min.js
+	@curl -s -o ./static/bootstrap-icons.min.css https://cdn.jsdelivr.net/npm/bootstrap-icons@${BOOTSTRAP_ICONS_VERSION}/font/bootstrap-icons.min.css
+	@mkdir -p ./static/fonts
+	@curl -s -o ./static/fonts/bootstrap-icons.woff2 https://cdn.jsdelivr.net/npm/bootstrap-icons@${BOOTSTRAP_ICONS_VERSION}/font/fonts/bootstrap-icons.woff2
+	@curl -s -o ./static/fonts/bootstrap-icons.woff https://cdn.jsdelivr.net/npm/bootstrap-icons@${BOOTSTRAP_ICONS_VERSION}/font/fonts/bootstrap-icons.woff
 
 generate-dynamic:
 	@go generate .

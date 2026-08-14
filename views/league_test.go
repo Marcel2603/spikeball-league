@@ -16,7 +16,7 @@ func TestLeagueDashboard(t *testing.T) {
 	matches := []db.Match{}
 	standings := []TeamStanding{{Name: "Team A", GamesPlayed: 1, Wins: 1, Losses: 0, PointsScored: 21, PointsDiff: 6, WinRate: 100.0}}
 
-	component := LeagueDashboard(league, teams, matches, standings)
+	component := LeagueDashboard(league, teams, matches, standings, "light")
 	var buf bytes.Buffer
 	err := component.Render(context.Background(), &buf)
 	if err != nil {
@@ -39,7 +39,7 @@ func TestLeagueDashboard_Empty(t *testing.T) {
 	matches := []db.Match{}
 	standings := []TeamStanding{}
 
-	component := LeagueDashboard(league, teams, matches, standings)
+	component := LeagueDashboard(league, teams, matches, standings, "dark")
 	var buf bytes.Buffer
 	err := component.Render(context.Background(), &buf)
 	if err != nil {
@@ -63,7 +63,7 @@ func TestLeagueDashboard_FailingWriter(_ *testing.T) {
 	standings := []TeamStanding{{Name: "A"}}
 
 	for i := 0; i < 15000; i++ {
-		_ = LeagueDashboard(league, teams, matches, standings).Render(context.Background(), &failWriter{target: i})
-		_ = LeagueDashboard(league, []db.Team{}, []db.Match{}, []TeamStanding{}).Render(context.Background(), &failWriter{target: i})
+		_ = LeagueDashboard(league, teams, matches, standings, "light").Render(context.Background(), &failWriter{target: i})
+		_ = LeagueDashboard(league, []db.Team{}, []db.Match{}, []TeamStanding{}, "dark").Render(context.Background(), &failWriter{target: i})
 	}
 }

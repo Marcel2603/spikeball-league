@@ -9,7 +9,7 @@ import (
 )
 
 func TestIndex(t *testing.T) {
-	component := Index()
+	component := Index("light")
 	var buf bytes.Buffer
 	err := component.Render(context.Background(), &buf)
 	if err != nil {
@@ -31,6 +31,6 @@ func TestIndex(t *testing.T) {
 
 func TestIndex_FailingWriter(_ *testing.T) {
 	for i := 0; i < 15000; i++ {
-		_ = Index().Render(context.Background(), &failWriter{target: i})
+		_ = Index("light").Render(context.Background(), &failWriter{target: i})
 	}
 }
