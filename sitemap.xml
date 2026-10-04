@@ -4,25 +4,10 @@
         <loc>https://marcel2603.github.io/spikeball-league/</loc>
       </url>
       <url>
-        <loc>https://marcel2603.github.io/spikeball-league/getting-started/</loc>
+        <loc>https://marcel2603.github.io/spikeball-league/about/license/</loc>
       </url>
       <url>
-        <loc>https://marcel2603.github.io/spikeball-league/getting-started/architecture/</loc>
-      </url>
-      <url>
-        <loc>https://marcel2603.github.io/spikeball-league/getting-started/health/</loc>
-      </url>
-      <url>
-        <loc>https://marcel2603.github.io/spikeball-league/getting-started/metrics/</loc>
-      </url>
-      <url>
-        <loc>https://marcel2603.github.io/spikeball-league/getting-started/configuration/</loc>
-      </url>
-      <url>
-        <loc>https://marcel2603.github.io/spikeball-league/getting-started/configuration/what/</loc>
-      </url>
-      <url>
-        <loc>https://marcel2603.github.io/spikeball-league/getting-started/configuration/where/</loc>
+        <loc>https://marcel2603.github.io/spikeball-league/about/security/</loc>
       </url>
       <url>
         <loc>https://marcel2603.github.io/spikeball-league/development/</loc>
@@ -34,9 +19,33 @@
         <loc>https://marcel2603.github.io/spikeball-league/development/release/</loc>
       </url>
       <url>
-        <loc>https://marcel2603.github.io/spikeball-league/about/security/</loc>
+        <loc>https://marcel2603.github.io/spikeball-league/development/tools/</loc>
       </url>
       <url>
-        <loc>https://marcel2603.github.io/spikeball-league/about/license/</loc>
+        <loc>https://marcel2603.github.io/spikeball-league/development/tools/generate-static-files/</loc>
+      </url>
+      <url>
+        <loc>https://marcel2603.github.io/spikeball-league/getting-started/</loc>
+      </url>
+      <url>
+        <loc>https://marcel2603.github.io/spikeball-league/getting-started/architecture/</loc>
+      </url>
+      <url>
+        <loc>https://marcel2603.github.io/spikeball-league/getting-started/configuration/</loc>
+      </url>
+      <url>
+        <loc>https://marcel2603.github.io/spikeball-league/getting-started/configuration/what/</loc>
+      </url>
+      <url>
+        <loc>https://marcel2603.github.io/spikeball-league/getting-started/configuration/where/</loc>
+      </url>
+      <url>
+        <loc>https://marcel2603.github.io/spikeball-league/getting-started/health/</loc>
+      </url>
+      <url>
+        <loc>https://marcel2603.github.io/spikeball-league/getting-started/metrics/</loc>
+      </url>
+      <url>
+        <loc>https://marcel2603.github.io/spikeball-league/getting-started/version/</loc>
       </url>
 </urlset>
