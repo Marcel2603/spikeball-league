@@ -120,6 +120,7 @@ require (
 )
 
 tool (
+	github.com/a-h/templ
 	github.com/a-h/templ/cmd/templ
 	github.com/pressly/goose/v3/cmd/goose
 	github.com/sqlc-dev/sqlc/cmd/sqlc
