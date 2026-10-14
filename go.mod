@@ -7,7 +7,7 @@ require (
 	github.com/PuerkitoBio/goquery v1.13.0
 	github.com/a-h/templ v0.3.1070
 	github.com/andybalholm/brotli v1.2.6
-	github.com/go-chi/chi/v5 v5.3.2
+	github.com/go-chi/chi/v5 v5.5.0
 	github.com/go-chi/cors v1.2.2
 	github.com/go-chi/metrics v0.1.1
 	github.com/google/uuid v1.6.0
